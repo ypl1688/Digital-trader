@@ -1,4 +1,4 @@
-﻿#! /bin/bash
+#! /bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
@@ -7,7 +7,7 @@ export PATH
 #	Author:	Rat's
 #	Dscription: Socat一键脚本
 #	Version: 1.0
-#	Blog: 数字交易员
+#	Blog: www.jishu.cn
 # ====================================================
 
 Green="\033[32m"
@@ -61,15 +61,15 @@ get_ip(){
 }
 
 config_socat(){
-    echo -e "${Green}转发开机自启，重启依旧有效${Font}"
-    echo -e "${Green}数字交易员提示请输入Socat配置信息！${Font}"
-    read -p "数字交易员提示请输入本地端口:" port1
-    read -p "数字交易员提示请输入远程端口:" port2
-    read -p "数字交易员提示请输入远程IP:" socatip
+    echo -e "${Green}遇到技术问题请联系大屌哥微信：AVCXXm${Font}"
+    echo -e "${Green}大屌哥提示请输入Socat配置信息！${Font}"
+    read -p "大屌哥提示请输入本地端口:" port1
+    read -p "大屌哥提示请输入远程端口:" port2
+    read -p "大屌哥提示请输入远程IP:" socatip
 }
 
 start_socat(){
-    echo -e "${Green}数字交易员提示正在配置Socat...${Font}"
+    echo -e "${Green}大屌哥提示正在配置Socat...${Font}"
     nohup socat TCP4-LISTEN:${port1},reuseaddr,fork TCP4:${socatip}:${port2} >> /root/socat.log 2>&1 &
     nohup socat -T 600 UDP4-LISTEN:${port1},reuseaddr,fork UDP4:${socatip}:${port2} >> /root/socat.log 2>&1 &
     if [ "${OS}" == 'CentOS' ];then
@@ -124,7 +124,7 @@ systemctl start rc-local >/dev/null 2>&1
     get_ip
     sleep 3
     echo
-    echo -e "${Green}转发开机自启，重启依旧有效${Font}"
+    echo -e "${Green}遇到技术问题请联系大屌哥微信：AVCXXm${Font}"
     echo -e "${Green}Socat安装并配置成功!${Font}"
     echo -e "${Blue}你的本地端口为:${port1}${Font}"
     echo -e "${Blue}你的远程端口为:${port2}${Font}"
@@ -133,7 +133,7 @@ systemctl start rc-local >/dev/null 2>&1
 }
 
 install_socat(){
-    echo -e "${Green}数字交易员提示即将安装Socat...${Font}"
+    echo -e "${Green}大屌哥提示即将安装Socat...${Font}"
     if [ "${OS}" == 'CentOS' ];then
         yum install -y socat
     else
@@ -141,7 +141,7 @@ install_socat(){
         apt-get install -y socat
     fi
     if [ -s /usr/bin/socat ]; then
-    echo -e "${Green}数字交易员提示Socat安装完成！${Font}"
+    echo -e "${Green}大屌哥提示Socat安装完成！${Font}"
     fi
 }
 
